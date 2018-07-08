@@ -2,7 +2,6 @@
   "name": "lukethompson.github.io",
   "version": "1.0.0",
   "description": "Website for Luke Thompson",
-  "main": "index.js",
   "author": "Luke Thompson <hello@lukethompson.dev>",
   "license": "MIT",
   "scripts": {

@@ -69,11 +69,11 @@ svg.user {
   margin: 0 auto;
 
   &.luke {
-    animation: typing .4s steps(4, end) .5s forwards, blink-caret .5s linear 1 forwards;
+    animation: typing .4s steps(4, end) .5s forwards, blink-caret .5s linear 2 forwards;
   }
 
   &.thompson {
-    animation: typing .8s steps(8, end) 1s forwards, blink-caret .5s linear 3 forwards;
+    animation: typing .8s steps(8, end) 1s forwards, blink-caret .5s linear 4 forwards;
   }
 }
 
