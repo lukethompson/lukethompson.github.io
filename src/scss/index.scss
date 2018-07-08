@@ -1,6 +1,7 @@
-$font-family-base: 'Work Sans';
-$hr-border-width: 4px;
 $primary: #00b97a;
+$font-family-base: 'Work Sans';
+$hr-border-color: $primary;
+$hr-border-width: 4px;
 $card-border-width: 0;
 $card-border-radius: 0;
 
@@ -11,7 +12,6 @@ html, body {
 }
 
 body {
-  border-top: $hr-border-width solid $primary;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -36,6 +36,16 @@ body {
 
 .base-transition-all {
   transition: all .25s ease-in-out;
+}
+
+hr {
+  width: 0;
+  animation-name: w-100;
+  animation-delay: 1.2s;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards; // Stay on the last frame
+  animation-iteration-count: 1; // Run only once
+  animation-timing-function: ease-in;
 }
 
 @media (min-width: 576px) {
@@ -100,5 +110,11 @@ svg {
 @keyframes fill {
   to {
     fill: $primary;
+  }
+}
+
+@keyframes w-100 {
+  to {
+    width: 100%;
   }
 }
