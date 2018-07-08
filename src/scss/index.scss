@@ -1,6 +1,8 @@
 $font-family-base: 'Work Sans';
 $hr-border-width: 4px;
 $primary: #00b97a;
+$card-border-width: 0;
+$card-border-radius: 0;
 
 @import 'bootstrap/scss/bootstrap.scss';
 
@@ -12,6 +14,10 @@ body {
   border-top: $hr-border-width solid $primary;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+  max-width: 720px;
 }
 
 .icon {
@@ -44,5 +50,55 @@ body {
 
   .lead {
     font-size: 1.25rem
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation-name: fade-in;
+  animation-delay: 1.2s;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards; // Stay on the last frame
+  animation-iteration-count: 1; // Run only once
+  animation-timing-function: ease-in;
+}
+
+svg {
+  .icon {
+    animation-name: fill;
+    animation-delay: 1.2s;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards; // Stay on the last frame
+    animation-iteration-count: 1; // Run only once
+    animation-timing-function: ease-in;
+  }
+
+  .user {
+    stroke-width: 10;
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+    animation-name: draw;
+    animation-duration: 2s;
+    animation-fill-mode: forwards; // Stay on the last frame
+    animation-iteration-count: 1; // Run only once
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fill {
+  to {
+    fill: $primary;
   }
 }
