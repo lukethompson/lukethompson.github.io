@@ -20,10 +20,6 @@ body {
   max-width: 720px;
 }
 
-.icon {
-  width: 100px;
-}
-
 .display-2 {
   font-size: 2.8rem;
   letter-spacing: -4px;
@@ -40,12 +36,45 @@ body {
 
 hr {
   width: 0;
-  animation-name: w-100;
-  animation-delay: 1.2s;
-  animation-duration: 1.2s;
-  animation-fill-mode: forwards; // Stay on the last frame
-  animation-iteration-count: 1; // Run only once
-  animation-timing-function: ease-in;
+  animation: w-100 1s ease-in 1.5s 1 forwards;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1s ease-in 1.5s 1 forwards;
+}
+
+svg.user {
+  width: 100px;
+
+  path.icon {
+    animation: fill 1s ease-in 1.2s 1 forwards;
+  }
+
+  path.user {
+    stroke-width: 10;
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+    animation: draw 2s ease-in-out .2s 1 forwards;
+  }
+}
+
+.typewriter {
+  visibility: hidden;
+  width: 0;
+  display: inline-block;
+  overflow: hidden;
+  border-right: .15em solid transparent;
+  white-space: nowrap;
+  margin: 0 auto;
+
+  &.luke {
+    animation: typing .4s steps(4, end) forwards, blink-caret .5s linear 1 forwards;
+  }
+
+  &.thompson {
+    animation: typing .8s steps(8, end) .5s forwards, blink-caret .5s linear 3 forwards;
+  }
 }
 
 @media (min-width: 576px) {
@@ -54,7 +83,7 @@ hr {
     letter-spacing: -6px;
   }
 
-  .icon {
+  svg.user {
     width: 200px;
   }
 
@@ -63,36 +92,9 @@ hr {
   }
 }
 
-.fade-in {
-  opacity: 0;
-  animation-name: fade-in;
-  animation-delay: 1.2s;
-  animation-duration: 1.2s;
-  animation-fill-mode: forwards; // Stay on the last frame
-  animation-iteration-count: 1; // Run only once
-  animation-timing-function: ease-in;
-}
-
-svg {
-  .icon {
-    animation-name: fill;
-    animation-delay: 1.2s;
-    animation-duration: 1.2s;
-    animation-fill-mode: forwards; // Stay on the last frame
-    animation-iteration-count: 1; // Run only once
-    animation-timing-function: ease-in;
-  }
-
-  .user {
-    stroke-width: 10;
-    stroke-dasharray: 4000;
-    stroke-dashoffset: 4000;
-    animation-name: draw;
-    animation-duration: 2s;
-    animation-fill-mode: forwards; // Stay on the last frame
-    animation-iteration-count: 1; // Run only once
-    animation-timing-function: ease-in-out;
-  }
+@keyframes blink-caret {
+  from { border-color: #ff9700; }
+  to { border-color: transparent; }
 }
 
 @keyframes draw {
@@ -118,3 +120,9 @@ svg {
     width: 100%;
   }
 }
+
+@keyframes typing {
+  from { visibility: visible; width: 0; }
+  to { visibility: visible; width: 100% }
+}
+
