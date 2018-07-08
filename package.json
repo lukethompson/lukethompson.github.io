@@ -1,0 +1,47 @@
+{
+  "name": "lukethompson.github.io",
+  "version": "1.0.0",
+  "description": "Website for Luke Thompson",
+  "main": "index.js",
+  "author": "Luke Thompson <hello@lukethompson.dev>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist",
+    "mkdirs": "mkdir -p dist/css && mkdir -p dist/assets",
+    "copy:assets": "cp -r src/assets/* dist/assets",
+    "copy:html": "find src -name '*.html' -type f -exec cp {} dist \\;",
+    "copy": "run-s copy:*",
+    "prebuild:dev": "run-s clean mkdirs copy",
+    "build:dev": "run-s lint-css css:dev css:autoprefixer",
+    "build:prod": "run-s lint-css css:prod css:autoprefixer",
+    "hash": "hashmark **/(app|vendor).* -d md5 -l 8 -c dist '{dir}/{name}.{hash}{ext}' | replaceinfiles -S -s dist/**/*.html",
+    "posthash": "rm dist/css/index.css",
+    "css:dev": "node-sass --include-path node_modules src/scss/index.scss --output-style compressed -o dist/css/",
+    "css:prod": "node-sass --include-path node_modules src/scss/index.scss --output-style compressed -o dist/css/",
+    "css:autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "lint-css": "stylelint src/scss/*.scss --syntax scss",
+    "kill": "lsof -n -i:8080 | grep LISTEN | awk '{print $2}' | xargs kill -9",
+    "preserve": "run-s build:dev kill",
+    "serve": "run-p browsersync watch",
+    "browsersync": "browser-sync start -s --files 'dist/**/*.(css|html)' --ss 'dist' --port 8080 --reload-debounce 500",
+    "watch:assets": "onchange 'assets/**/*' -- npm run copy:assets",
+    "watch:html": "onchange 'src/**/*.html' -- npm run copy:html",
+    "watch:css": "onchange 'src/**/*.scss' -- npm run css:dev",
+    "watch": "run-p watch:css watch:html watch:assets"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.6.4",
+    "browser-sync": "^2.24.5",
+    "hashmark": "^5.0.0",
+    "node-sass": "^4.9.0",
+    "npm-run-all": "^4.1.3",
+    "onchange": "^4.0.0",
+    "postcss-cli": "^5.0.1",
+    "replaceinfiles": "^1.1.4",
+    "rimraf": "^2.6.2",
+    "stylelint": "^9.3.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.1"
+  }
+}
