@@ -16,23 +16,16 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.card {
-  max-width: 720px;
-}
-
 .display-2 {
   font-size: 2.8rem;
   letter-spacing: -4px;
   line-height: .9;
 }
 
-.lead {
-  font-size: .9rem;
-}
-
 .base-transition-all {
   transition: all .25s ease-in-out;
 }
+
 
 hr {
   width: 0;
@@ -59,6 +52,24 @@ svg.user {
   }
 }
 
+.header {
+  @include media-breakpoint-up(sm) {
+    max-width: 420px;
+    margin-top: $hr-border-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+	}
+}
+
+.main {
+  @include media-breakpoint-up(sm) {
+    padding-top: 0;
+    padding-left: 420px;
+	}
+}
+
 .typewriter {
   visibility: hidden;
   width: 0;
@@ -74,21 +85,6 @@ svg.user {
 
   &.thompson {
     animation: typing .8s steps(8, end) 1s forwards, blink-caret .5s linear 4 forwards;
-  }
-}
-
-@media (min-width: 576px) {
-  .display-2 {
-    font-size: 5.5rem;
-    letter-spacing: -6px;
-  }
-
-  svg.user {
-    width: 200px;
-  }
-
-  .lead {
-    font-size: 1.25rem
   }
 }
 
