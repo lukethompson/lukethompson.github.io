@@ -11,6 +11,7 @@
     "copy:html": "find src -name '*.html' -type f -exec cp {} dist \\;",
     "copy": "run-s copy:*",
     "prebuild:dev": "run-s clean mkdirs copy",
+    "prebuild:prod": "run-s clean mkdirs copy",
     "build:dev": "run-s lint-css css:dev css:autoprefixer",
     "build:prod": "run-s lint-css css:prod css:autoprefixer",
     "hash": "hashmark **/(app|vendor).* -d md5 -l 8 -c dist '{dir}/{name}.{hash}{ext}' | replaceinfiles -S -s dist/**/*.html",
