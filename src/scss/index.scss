@@ -16,6 +16,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .display-2 {
   font-size: 2.8rem;
   letter-spacing: -4px;
@@ -37,6 +41,15 @@ hr {
   animation: fade-in 1s ease-in 1.5s 1 forwards;
 }
 
+.media {
+  img {
+    filter: grayscale(100%);
+  }
+  &:hover img {
+    filter: grayscale(0);
+  }
+}
+
 svg.user {
   width: 100px;
 
@@ -54,19 +67,25 @@ svg.user {
 
 .header {
   @include media-breakpoint-up(sm) {
-    max-width: 420px;
+    max-width: 280px;
     margin-top: $hr-border-width;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
+  }
+  @include media-breakpoint-up(md) {
+    max-width: 360px;
 	}
 }
 
 .main {
   @include media-breakpoint-up(sm) {
     padding-top: 0;
-    padding-left: 420px;
+    padding-left: 280px;
+  }
+  @include media-breakpoint-up(md) {
+    padding-left: 360px;
 	}
 }
 
